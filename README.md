@@ -13,7 +13,13 @@ write = true
 mpc = loadcase(casedata)
 VVI = runVVI(mpc, write)
 ```
-Where casedata is the name of the power grid to be analyzed \(e.g. 'case9'\). This will return a column vector of voltage failure points of each bus in the power grid. It will also save the results to a file titled "runVVI-*n*bus.csv" where *n* is the number of buses in the system.
+Where casedata is the name of the power grid to be analyzed \(e.g. 'case9'\). This will return a column vector of voltage failure points of each bus in the power grid. It will also save the results to a file titled "runVVI-*n*bus.csv" where *n* is the number of buses in the system. Each row in the file represents a different bus and the columns contain the following information from the point of failure:
+1) Bus index
+2) Bus active power demand
+3) Bus active power generation
+4) Bus reactive power demand
+5) Bus reactive power generation
+6) Maximum voltage magnitude to cause a PF convergence failure
 
 ### Power Vulnerability Index
 The method for finding the PVI is slightly more complicated than the VVI:
