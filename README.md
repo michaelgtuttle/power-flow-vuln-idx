@@ -30,15 +30,17 @@ Where the parameters are such:
 - *write* determines whether or not the function will automatically write the results to a file. By default this is 0. 
 
 Because the PVI measures only the vulnerability of PQ buses, the output vectors will not be the length of the number of buses in the grid. The function call will return the following information:
-- **S** : Column vector of the magnitude of the minimum apparent power injections \(how much is added, not total bus power\) causing a power flow convergence failure at each PQ bus
-- **theta** : The angle of the apparent power injection at each bus
-- **busIdx** : The corresponding bus index of each PQ bus analyzed
-- **success** : A column vector showing whether each bus was successful at causing a failure
+- *S* : Column vector of the magnitude of the minimum apparent power injections \(how much is added, not total bus power\) causing a power flow convergence failure at each PQ bus
+- *theta* : The angle of the apparent power injection at each bus
+- *busIdx* : The corresponding bus index of each PQ bus analyzed
+- *success* : A column vector showing whether each bus was successful at causing a failure
 
 If `write = true`, the function will store the results in a file titled "runPVI-*n*bus.csv" where *n* is the number of buses in the system. If a bus is not successful at causing a failure at a given Pmax, success will be set to 0 and both S and theta will be set to infinite and should be disregarded.
 
 ## Functional Descriptions
 Functions other than the two described above are also included in the repository and will be described below.
+
+---
 
 ##### `findPQFailureFast`
 This function finds the PVI of one bus of a power grid and is used in runPVI by calling it once for every PQ bus in the grid. The inputs and outputs are very similar to those of runPVI, although you must also specify a bus index to be analyzed. 
@@ -117,6 +119,8 @@ Performs single-bus load shedding to restore convergence after a failure caused 
 
 ##### `test_convergence`
 This function runs the PVI calculation for an entire system and outputs a file containing the results. This function can be run in place of runPVI, but this is not recommended as it is slower and may not be compatible with Matpower7.0. The primary use for this function is to create the data file necessary to run the function `load_shed_PQ_sweep`.
+
+---
 
 ##### `test_convergence_se`
 This function applies both the PVI and VVI calculations to the state estimation algorithm and runs them on the given system. The only input arguments are the name of the system to be analyzed and the resolution of PVI calculation. The function creates two files, one storing the VVI results for state estimation, and one storing the PVI results.  
