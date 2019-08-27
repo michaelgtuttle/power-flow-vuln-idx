@@ -120,6 +120,12 @@ Performs single-bus load shedding to restore convergence after a failure caused 
 ##### `test_convergence`
 This function runs the PVI calculation for an entire system and outputs a file containing the results. This function can be run in place of runPVI, but this is not recommended as it is slower and may not be compatible with Matpower7.0. The primary use for this function is to create the data file necessary to run the function `load_shed_PQ_sweep`.
 
+**Inputs:**
+- *case_data* : The file name of the system you want to analyze
+- *max_power* : The maximum apparent power the function checks before moving on to the next node
+- *angular_res* : The number of angles the function sweeps at each apparent power step
+- *radial_step* : The step size of the apparent power increments. Decreasing *radial_step* will improve the resolution but increase the run time linearly.
+
 ---
 
 ##### `test_convergence_se`
