@@ -1,4 +1,4 @@
-# Functions for Calculating Power Flow Vulnerability Indices
+# Calculating PF Vulnerability Indices
 
 ## Introduction
 This repository contains the code used to calculated the Voltage Vulnerability Index \(VVI\) and the Power Vulnerability Index \(PVI\) described in the paper "Algorithmic Approaches to Characterizing Power Flow Cyber-Attack Vulnerabilities" published at ISGT 2019.
